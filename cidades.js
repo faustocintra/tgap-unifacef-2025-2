@@ -99,5 +99,5 @@ E no método addEdge, em vez de usar .add(), usamos .push() para
 inserir o vértice no array.
 
 Dessa forma, se chamarmos addEdge("Franca", "Ribeirão Corrente")
-duas vezes, o grafo vai registrar as duas conexões separadamente.
+duas vezes, o grafo vai registrar as duas conexões separadamente. 
 */
