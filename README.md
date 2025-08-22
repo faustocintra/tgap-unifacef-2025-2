@@ -1,4 +1,4 @@
-# Forkando e criando um Codespace para este repositório
+# Forkando e criando um Codespace para este repositório:
 
 1. Faça _login_ no [GitHub](https://github.com).
 2. Acesse [https://github.com/faustocintra/tgap-unifacef-2025-2](https://github.com/faustocintra/tgap-unifacef-2025-2).
