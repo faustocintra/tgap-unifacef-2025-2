@@ -21,14 +21,10 @@ cidades.addEdge('Franca', 'Ibiraci')
 cidades.addEdge('Cristais Paulista', 'São José da Bela Vista')
 cidades.addEdge('Cristais Paulista', 'Pedregulho')
 cidades.addEdge('Pedregulho', 'Rifaina')
-cidades.addEdge('Pedregulho', 'Claraval')
-
 cidades.addEdge('Claraval', 'Ibiraci')
-
-cidades.addEdge('Ibiraci', 'Itirapuã')
 cidades.addEdge('Itirapuã', 'Patrocínio Paulista')
 cidades.addEdge('Patrocínio Paulista', 'Franca')
-cidades.addEdge('Franca', 'Restinga')
+cidades.addEdge('Patrocínio Paulista', 'Batatais')
 cidades.addEdge('Restinga', 'Batatais')
 cidades.addEdge('Franca', 'Batatais')
 export default cidades
