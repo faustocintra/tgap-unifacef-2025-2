@@ -68,37 +68,29 @@ export default g
 /*
 2 - Você conseguiu representar as duas ligações entre Franca e Ribeirão Corrente? Por quê?
 
-Não, não foi possível representar duas ligações entre Franca e Ribeirão Corrente,
-pois a lista de adjacência usa Set, que não permite elementos duplicados. Assim,
-o grafo só registra uma única aresta entre os dois vértices.
+Não, não consegui representar duas ligações entre Franca e Ribeirão Corrente.
+Isso acontece porque a implementação atual do grafo usa lista de adjacência com Set para armazenar os vizinhos.
 
+O Set não permite elementos duplicados — ou seja, mesmo que eu tente adicionar duas vezes a mesma aresta entre os mesmos vértices, o grafo mantém apenas uma única conexão.
+
+Para suportar duas ligações (multiarestas) seria necessário alterar a estrutura de dados, trocando o Set por um Array (ou outro tipo de estrutura que aceite duplicatas), de forma que cada chamada de addEdge() possa registrar uma nova ocorrência da mesma aresta.
 */
 
 
 /*
 3 - Proponha uma nova implementação da classe Graph que torne possível representar mais de uma aresta entre dois vértices.
 
-Para permitir mais de uma aresta entre dois vértices (multiarestas),
-podemos modificar a implementação da classe Graph trocando o uso
-de Set por Array na lista de adjacência.
+import Graph from './lib/graph.class.multi.js';
 
-Assim, em vez de armazenar cada vizinho apenas uma vez, será possível
-registrar múltiplas ocorrências do mesmo vértice, representando várias
-ligações entre as mesmas cidades.
+const g = new Graph(false); // não direcionado
 
-Exemplo de mudança:
+g.addVertex("Franca");
+g.addVertex("Ribeirão Corrente");
 
-- Antes:
-this.adjList = new Map()
-this.adjList.set(v, new Set())
+/Duas arestas paralelas:
+g.addEdge("Franca", "Ribeirão Corrente"); 
+g.addEdge("Franca", "Ribeirão Corrente"); 
 
-- Depois:
-this.adjList = new Map()
-this.adjList.set(v, [])
-
-E no método addEdge, em vez de usar .add(), usamos .push() para
-inserir o vértice no array.
-
-Dessa forma, se chamarmos addEdge("Franca", "Ribeirão Corrente")
-duas vezes, o grafo vai registrar as duas conexões separadamente. 
+console.log(g.edgeCount("Franca", "Ribeirão Corrente"));
+console.log(g.neighbors("Franca")); // mostra duas ocorrências para "Ribeirão Corrente"
 */
