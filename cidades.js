@@ -1,3 +1,6 @@
+//1) Crie uma arquivo chamado cidades.js e, nele, 
+// represente em código o grafo da figura a seguir 
+// (não se preocupe com a distância entre as cidades).
 class Graph {
     constructor() {
         this.adjList = new Map();
@@ -74,3 +77,45 @@ cidades.addEdge("Patrocínio Paulista", "Franca");
 cidades.addEdge("Itirapuã", "Franca");
 
 cidades.printGraph();
+
+
+//2) Você conseguiu representar as duas ligações entre Franca e Ribeirão Corrente? Por quê?
+//Não, porque a implementação com lista de adjacência tradicional só permite uma aresta
+//entre dois vértices. Se adicionarmos novamente a mesma ligação, ela seria redundante
+// e não diferenciaria as duas estradas entra as duas cidades.
+
+//3) Proponha uma nova implementação da classe Graph que torne possível 
+// representar mais de uma aresta entre dois vértices.
+
+class GraphMulti {
+    constructor() {
+        this.adjList = new Map();
+    }
+
+    addVertex(vertex) {
+        if (!this.adjList.has(vertex)) {
+            this.adjList.set(vertex, []);
+        }
+    }
+
+    addEdge(v1, v2, info = null) { 
+        this.adjList.get(v1).push({destino: v2, info});
+        this.adjList.get(v2).push({destino: v1, info});
+    }
+
+    printGraph() {
+        for (let [vertex, edges] of this.adjList.entries()) {
+            let connections = edges.map(e => e.destino + (e.info ? ` (#{e.info})` : ""));
+            console.log(vertex + " -> " + connections.join(", "));
+        }
+    }
+}
+
+const g = new GraphMulti();
+g.addVertex("Franca");
+g.addVertex("Ribeirão Corrente");
+
+g.addEdge("Franca", "Ribeirão Corrente", "Estrada A");
+g.addEdge("Franca", "Ribeirão Corrente", "Estrada B");
+
+g.printGraph();
