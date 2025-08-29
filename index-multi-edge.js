@@ -63,7 +63,6 @@ console.log(g)
 
 console.log('-'.repeat(80))
 
-// também pode usar:
 g.printGraph()
 
 export default g
