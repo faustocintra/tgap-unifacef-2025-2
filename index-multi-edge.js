@@ -1,6 +1,6 @@
-import Graph from './lib/graph.class.js'
+import MultiEdgeGraph from './lib/multi-edge-graph.class.js'
 
-const g = new Graph(false)  // false = não direcionado
+const g = new MultiEdgeGraph(false)  // false = não direcionado
 
 console.log(g)
 
@@ -44,7 +44,7 @@ g.addEdge("Jeriquara", "Ribeirão Corrente")
 g.addEdge("Jeriquara", "Pedregulho")
 g.addEdge("Jeriquara", "Cristais Paulista")
 g.addEdge("Ribeirão Corrente", "Franca")
-g.addEdge("Franca", "Ribeirão Corrente")
+g.addEdge("Franca", "Ribeirão Corrente") // aqui pode repetir agora
 g.addEdge("Pedregulho", "Rifaina")
 g.addEdge("Pedregulho", "Cristais Paulista")
 g.addEdge("Cristais Paulista", "Franca")
@@ -63,42 +63,7 @@ console.log(g)
 
 console.log('-'.repeat(80))
 
+// também pode usar:
+g.printGraph()
+
 export default g
-
-/*
-2 - Você conseguiu representar as duas ligações entre Franca e Ribeirão Corrente? Por quê?
-
-Não, não foi possível representar duas ligações entre Franca e Ribeirão Corrente,
-pois a lista de adjacência usa Set, que não permite elementos duplicados. Assim,
-o grafo só registra uma única aresta entre os dois vértices.
-
-*/
-
-
-/*
-3 - Proponha uma nova implementação da classe Graph que torne possível representar mais de uma aresta entre dois vértices.
-
-Para permitir mais de uma aresta entre dois vértices (multiarestas),
-podemos modificar a implementação da classe Graph trocando o uso
-de Set por Array na lista de adjacência.
-
-Assim, em vez de armazenar cada vizinho apenas uma vez, será possível
-registrar múltiplas ocorrências do mesmo vértice, representando várias
-ligações entre as mesmas cidades.
-
-Exemplo de mudança:
-
-- Antes:
-this.adjList = new Map()
-this.adjList.set(v, new Set())
-
-- Depois:
-this.adjList = new Map()
-this.adjList.set(v, [])
-
-E no método addEdge, em vez de usar .add(), usamos .push() para
-inserir o vértice no array.
-
-Dessa forma, se chamarmos addEdge("Franca", "Ribeirão Corrente")
-duas vezes, o grafo vai registrar as duas conexões separadamente. 
-*/
