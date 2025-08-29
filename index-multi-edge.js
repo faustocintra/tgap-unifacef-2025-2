@@ -1,6 +1,6 @@
-import Graph from './lib/graph.class.js'
+import MultiEdgeGraph  from './lib/multi-edge-graph.class.js'
 
-const g = new Graph(false) // false = não direcionado
+const g = new MultiEdgeGraph (false) // false = não direcionado
 
 // Exercício 1 - Crie uma arquivo chamado cidades.js e, nele, represente em código o grafo da figura a seguir (não se preocupe com a distância entre as cidades).
 
@@ -58,36 +58,3 @@ g.addEdge('Patrocínio Paulista', 'Itirapuã')
 
 console.log('Grafo após a criação das arestas')
 console.log(g)
-
-/* 
-    Exercício 2 - Você conseguiu representar as duas ligações entre Franca e Ribeirão Corrente? Por quê?
-    
-    Resposta: Não foi possível representar as duas ligações entre Franca e Ribeirão Corrente, pois no nosso código atualmente
-    armazenamos os vértices em um objeto do tipo Set, e como esse tipo não permite elementos duplicados, quando tentamos adicionar
-    a segunda ligação entre as cidades de Franca e Ribeirão Corrente a mesma não é armazenada.
-*/
-
-
-/*
-    Exercício 3 - Proponha uma nova implementação da classe Graph que torne possível representar mais de uma aresta entre dois vértices.
-
-    Resposta: Para que a classe Graph consiga representar mais de uma aresta entre dois vértices será necessário trocar o uso
-    do Set por um Array na lista de arestas.
-
-    Como está atualmente:
-    this.adjList.set(v, new Set())
-
-    Como deverá ficar:
-    this.adjList.set(v, [])
-
-    Será necessário também alterar o método addEdge, ao invés de utilizar o .add, será ncessário utilizar o .push() para que seja
-    possivel inserir o vértice no array.
-
-    Como está atualmente:
-    this.adjList.get(v).add(w)
-    if (!this.isDirected) this.adjList.get(w).add(v)
-
-    Como deverá ficar:
-    this.adjList.get(v).push(w)
-    if (!this.isDirected) this.adjList.get(w).push(v)
-*/
