@@ -1,4 +1,4 @@
-import Graph from './lib/graph.class.js'
+import Graph from './lib/multi-edge-graph.class.js'
 
 // Atividade do dia 21/08 no AVA
 
